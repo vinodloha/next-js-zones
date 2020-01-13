@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pages:Homepage renders the homepage 1`] = `
+<div
+  className="jsx-3583494339 text-center"
+>
+  <p
+    className="jsx-3583494339"
+  >
+    Welcome to the boilerplate React app using NextJS!
+  </p>
+  <p
+    className="jsx-3583494339"
+  >
+    Try navigating to
+    <a
+      href="/example/second-page"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      another page
+    </a>
+    and observe the URL changing
+  </p>
+</div>
+`;

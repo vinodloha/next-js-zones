@@ -1,0 +1,164 @@
+{
+  "description": "Boilerplate repo for React apps with CICD pipelines, best practices, and code governance",
+  "main": "index.js",
+  "keywords": [
+    "boilerplate",
+    "react",
+    "starter"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "next build",
+    "docker:build": "docker build -t zones .",
+    "export": "next export",
+    "dev": "next",
+    "generate": "plop",
+    "lint": "npm run lint:eslint",
+    "lint:eslint": "eslint --ignore-path .gitignore \"**/*.{jsx,js}\"",
+    "lint:prettier": "pretty-quick",
+    "pretest": "npm run lint",
+    "semantic-release": "npx semantic-release",
+    "start": "next start",
+    "test": "jest --coverage",
+    "test:badges": "jest-coverage-badges",
+    "docker": "npm run docker:build"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-angular"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx,ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/out/",
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/coverage/",
+      "/__mocks__/"
+    ],
+    "coverageReporters": [
+      "clover",
+      "json",
+      "json-summary",
+      "lcov",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/build/",
+      "<rootDir>/out/",
+      "<rootDir>/coverage/"
+    ],
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint"
+    ],
+    "**/*": [
+      "pretty-quick — staged",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "docs",
+            "package.json",
+            "package-lock.josn",
+            "coverage/badge-*.svg"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "name": "zones",
+  "version": "0.1.0",
+  "author": "vinkumar2",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amclin/react-project-boilerplate.git"
+  },
+  "homepage": "https://github.com/amclin/zones",
+  "bugs": {
+    "url": "https://github.com/amclin/zones/issues"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "next": "=9.1.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-angular": "^8.3.4",
+    "@semantic-release/changelog": "^3.0.6",
+    "@semantic-release/commit-analyzer": "^7.0.0",
+    "@semantic-release/git": "^8.0.0",
+    "@semantic-release/github": "^6.0.1",
+    "@semantic-release/npm": "^6.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "husky": "^4.0.7",
+    "jest": "^24.9.0",
+    "jest-coverage-badges": "^1.1.2",
+    "lint-staged": "^9.5.0",
+    "plop": "^2.5.3",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "react-test-renderer": "^16.12.0"
+  }
+}
