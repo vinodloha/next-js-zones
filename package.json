@@ -12,6 +12,7 @@
     "docker:build": "docker build -t zones .",
     "export": "next export",
     "dev": "next",
+    "dev:prod": "APP_NAME=banking BASE_PATH=/digital/banking yarn dev",
     "generate": "plop",
     "lint": "npm run lint:eslint",
     "lint:eslint": "eslint --ignore-path .gitignore \"**/*.{jsx,js}\"",

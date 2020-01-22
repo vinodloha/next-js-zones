@@ -9,11 +9,13 @@ const config = {
 }
 
 module.exports = {
+  assetPrefix: process.env.BASE_PATH,
   serverRuntimeConfig: {
     // Will only be available on the server side
   },
   publicRuntimeConfig: {
     // Will be available on both server and client (but not during build)
-    ...config
+    ...config,
+    basePath: process.env.BASE_PATH || ''
   }
 }
